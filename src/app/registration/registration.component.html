@@ -1,0 +1,21 @@
+<app-header></app-header>
+<form [formGroup]="userForm">
+        First Name : <input type="text" formControlName="fname">
+      
+        <div class="error" *ngIf="this.userForm.controls.fname.errors?.required">
+          This is mandatory field.
+        </div>
+      
+        <br><br>
+        Last Name : <input type="text" formControlName="lname">
+        <br><br>
+      
+        Female : <input type="radio" value="Female" formControlName="gender">
+        Male : <input type="radio" value="Male" formControlName="gender">
+        <br><br>
+      
+        <button [hidden]="this.userForm.invalid" (click)="submitDetails()">Submit</button>
+      
+      </form>
+
+      <app-footer></app-footer>
