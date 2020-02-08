@@ -1,19 +1,34 @@
-<p>view works!</p>
-{{users | json}}
 
-<table>
-    <tr>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Gender</th>
-        <th>Delete</th>
-        <th>Edit</th>
-    </tr>
-    <tr *ngFor="let user of users">
-        <td>{{user.fname}}</td>
-        <td>{{user.lname}}</td>
-        <td>{{user.gender}}</td>
-        <td><button (click)="delete(user.fname)"> Delete </button></td>
-        <td><button (click)="edit(user.fname)"> Edit </button></td>
-    </tr>
+
+<div class="card">
+    
+             <div class="card-header">  
+            User Details      
+            </div>
+            <div class="card-body">  
+  <table class="table">
+        <thead>
+          <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Gender</th>
+                <th>Delete</th>
+                <th>Edit</th>
+          </tr>
+        </thead>
+        <tbody>
+                <tr *ngFor="let user of users">
+                        <td>{{user.fname}}</td>
+                        <td>{{user.lname}}</td>
+                        <td>{{user.gender}}</td>
+                        <td><button class="btn btn-danger btn-sm"  (click)="delete(user.fname)"> Delete </button></td>
+                        <td><button  class="btn btn-info btn-sm" (click)="edit(user.fname)"> Edit </button></td>
+                    </tr>
+        </tbody>
+    
 </table>
+</div>
+<div class="card-footer">  
+    
+        </div>
+        </div>
