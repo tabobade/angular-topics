@@ -1,28 +1,37 @@
 <app-header></app-header>
 <form [formGroup]="userForm">
 
-        <div class="form-group col-md-4">
-                <label for="usr">     First Name :</label>
-                <input type="text"  class="form-control" formControlName="fname">
-                <div class="error text-danger" *ngIf="this.userForm.controls.fname.errors?.required">
-                        This is mandatory field.
-                      </div>
-                      </div>
-              <div class="form-group col-md-4">
-                    <label for="usr">     Last Name :</label>
-                    <input type="text"  class="form-control" formControlName="lname">
-                  </div>
-                     
-   
-      
-     
-                  <div class="form-group col-md-4">
-        Female : <input type="radio" value="Female" formControlName="gender">
-        Male : <input type="radio" value="Male" formControlName="gender">
+    <div class="form-group col-md-4">
+        <label for="usr"> First Name :</label>
+        <input type="text" class="form-control" formControlName="fname">
+        <div class="error text-danger" *ngIf="this.userForm.controls.fname.errors?.required">
+            This is mandatory field.
+        </div>
     </div>
     <div class="form-group col-md-4">
-        <button class="btn btn-success" [hidden]="this.userForm.invalid" (click)="submitDetails()">Submit</button>
-      </div>
-      </form>
+        <label for="usr"> Last Name :</label>
+        <input type="text" class="form-control" formControlName="lname">
+    </div>
 
-      <app-footer></app-footer>
+
+
+
+    <div class="form-group col-md-4">
+        Female : <input type="radio" value="Female" formControlName="gender">
+        Male : <input type="radio" value="Male" formControlName="gender">
+
+
+    </div>
+
+    <div class="form-group col-md-4" *ngFor="let item of hobbiesArr">
+        {{item}} : <input type="checkbox" [checked]="this.userForm.get('hobbies').value.includes(item)" [value]="item"
+            (change)="onChangeHobbies($event)">
+
+
+    </div>
+    <div class="form-group col-md-4">
+        <button class="btn btn-success" (click)="submitDetails()">Submit</button>
+    </div>
+</form>
+
+<app-footer></app-footer>
