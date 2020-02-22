@@ -17,12 +17,6 @@ hobbiesArr:string[]=["CRICKET","MUSIC","TRAVELLING","COOKINGs"];
   constructor(private formBuilder: FormBuilder, private dataService: DataService, private router: Router, private activatedRoute: ActivatedRoute) {
 
 
-    this.userForm = this.formBuilder.group({
-      fname: ['', Validators.required],
-      lname: [''],
-      gender: [''],
-hobbies:new FormArray( [],[Validators.required])
-    });
 
 
   }
@@ -30,6 +24,14 @@ hobbies:new FormArray( [],[Validators.required])
 
   ngOnInit() {
 
+    this.userForm = this.formBuilder.group({
+      fname: ['', Validators.required],
+      lname: [''],
+      gender: [''],
+hobbies:new FormArray([],[Validators.required])
+    });
+
+    console.log(this.userForm.get('hobbies').value);
     var fname = this.activatedRoute.snapshot.paramMap.get("id");
 if(fname!=null)
     {
@@ -54,7 +56,18 @@ if(fname!=null)
 
   submitDetails() {
     console.log(this.userForm.value);
-   this.dataService.saveData(this.userForm.value);
+   this.dataService.saveData(this.userForm.value).subscribe(response=>
+    {
+
+      console.log(response);
+    }
+    ,
+    error=>
+    {
+
+      console.log(error);
+    }
+    );
     this.router.navigateByUrl("view.htm");
   }
 
@@ -62,15 +75,17 @@ if(fname!=null)
   onChangeHobbies(event)
 
   
-      {   var array: FormArray = this.userForm.get("hobbies") as FormArray;
+      {  
+        console.log(event);
+        var array: FormArray = this.userForm.get("hobbies") as FormArray;
 
-      if (event.target.checked) {
-      array.push(new FormControl(event.target.value));
+      if (event.checked) {
+      array.push(new FormControl(event.source.value));
       }
       else {
         var index = 0;
         this.userForm.get("hobbies").value.forEach(element => {
-          if (element == event.target.value) {
+          if (element == event.source.value) {
             array.removeAt(index);
         }
         index++;

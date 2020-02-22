@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { User } from './user';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,43 +10,26 @@ export class DataService {
 
   users: User[] = [];
 
-  constructor() {
+  constructor(private httpClient: HttpClient) {
 
   }
 
-  public saveData(user: User): boolean {
+  public saveData(user: User): Observable<User> {
 
+    return this.httpClient.post<User>("http://localhost:9090/user", user);
 
-
-    for (let index = 0; index < this.users.length; index++) {
-
-      if (user.fname == this.users[index].fname) {
-        this.users.splice(index, 1);
-        this.users.push(user);
-        return true;
-      }
-    }
-
-    this.users.push(user);
-    return true;
   }
 
 
-  public getData() {
-    return this.users;
+  public getData(): Observable<User[]> {
+    return this.httpClient.get<User[]>("http://localhost:9090/user");
+
   }
 
-  public deleteData(fname) {
+  public deleteData(fname): Observable<User[]> {
 
-    for (let index = 0; index < this.users.length; index++) {
+    return this.httpClient.delete<User[]>("http://localhost:9090/user/"+fname);
 
-      if (fname == this.users[index].fname) {
-        this.users.splice(index, 1);
-
-        console.log("Data Removed");
-      }
-      console.log(this.users.length);
-    }
   }
 
 

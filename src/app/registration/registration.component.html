@@ -33,7 +33,7 @@
     </div>
 
     <div class="form-group col-md-4" *ngFor="let item of hobbiesArr">
-        {{item}} : <mat-checkbox color="primary" type="checkbox" [checked]="this.userForm.get('hobbies').value.includes(item)" [value]="item"
+        {{item}} : <mat-checkbox color="primary" type="checkbox" [checked]="(this.userForm.get('hobbies').value!=undefined && this.userForm.get('hobbies').value.includes(item))" [value]="item"
             (change)="onChangeHobbies($event)"></mat-checkbox>
 
 

@@ -12,7 +12,14 @@ export class ViewComponent implements OnInit {
 
   users:User[]=[];
   constructor(private dataService:DataService,private router:Router) {
-this.users=this.dataService.getData();
+this.dataService.getData().subscribe(response=>{
+console.log(response)
+  this.users=response;
+},
+  error=>{
+
+
+  });
 
 
    }
@@ -22,7 +29,15 @@ this.users=this.dataService.getData();
   delete(firstName)
   {
 console.log(firstName);
-this.dataService.deleteData(firstName);
+this.dataService.deleteData(firstName).subscribe(resp=>
+  {
+
+    this.users=resp;
+  },
+  err=>{
+
+  }
+  );
   }
 
   edit(firstName)
