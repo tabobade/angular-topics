@@ -34,7 +34,7 @@ export class DataService {
 
 
   getUserByFname(fname) {
-    console.log(fname);
+  
     let user: User;
     for (let index = 0; index < this.users.length; index++) {
 

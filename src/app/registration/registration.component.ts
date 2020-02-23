@@ -4,6 +4,7 @@ import { DataService } from '../data.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { from } from 'rxjs';
 import { User } from '../user';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
@@ -14,7 +15,7 @@ hobbiesArr:string[]=["CRICKET","MUSIC","TRAVELLING","COOKINGs"];
 
   userForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private dataService: DataService, private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(private toasterService:ToastrService ,private formBuilder: FormBuilder, private dataService: DataService, private router: Router, private activatedRoute: ActivatedRoute) {
 
 
 
@@ -59,12 +60,12 @@ if(fname!=null)
    this.dataService.saveData(this.userForm.value).subscribe(response=>
     {
 
-      console.log(response);
+     this.toasterService.success("User registed successfully!","Transaction Alert");
     }
     ,
     error=>
     {
-
+      this.toasterService.error("Internal Server Error","Transaction Alert!");
       console.log(error);
     }
     );

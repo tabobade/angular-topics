@@ -25,8 +25,10 @@ const routes: Routes = [
     component: RegistrationComponent
   },
   {
-    path: '',
-    component: AppComponent
+    path:'',
+    pathMatch: 'full',
+    redirectTo:'registration.htm'
+   
   }
 ];
 

@@ -3,7 +3,7 @@ import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule, MatRadioModule, MatCheckboxModule } from '@angular/material';
-
+import {ToastrModule} from 'ngx-toastr';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegistrationComponent } from './registration/registration.component';
@@ -28,7 +28,13 @@ import { HttpClientModule } from '@angular/common/http';
    HttpClientModule,
     MatInputModule,
     MatRadioModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    ToastrModule.forRoot({
+      timeOut: 10000,
+      positionClass: 'toast-top-right',
+      closeButton: true,
+      progressBar:true
+    }) 
   ],
   providers: [],
   bootstrap: [AppComponent]
