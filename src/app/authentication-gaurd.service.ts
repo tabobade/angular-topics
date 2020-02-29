@@ -8,7 +8,7 @@ import { CookieService } from 'ngx-cookie-service';
 export class AuthenticationGaurdService implements CanActivate {
 
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | import("@angular/router").UrlTree | import("rxjs").Observable<boolean | import("@angular/router").UrlTree> | Promise<boolean | import("@angular/router").UrlTree> {
+  canActivate() {
 console.log(this.cookieService.get("isAuthenticated"));
     if (this.cookieService.get("isAuthenticated") == "true")
      {
