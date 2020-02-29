@@ -1,1 +1,10 @@
-<p>header works!</p>
+<nav class="navbar navbar-expand-sm bg-light navbar-dark">
+   
+   <div class="pull-left"> 
+    Welcome : {{user|uppercase}}
+</div> 
+  <br> 
+  <div class="pull-right "> 
+   <button class="btn btn-error" (click)="logout()">Sign Off</button>
+</div> 
+</nav>

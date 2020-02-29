@@ -1,0 +1,28 @@
+<div class="card">
+    <div class="card-header">
+        Angular Cookie Authentication
+    </div>
+    <div class="card-body">
+        <div class="container">
+            <form [formGroup]="loginForm">
+                <div class="form-group">
+                    <label for="uname">Username:</label>
+                    <input type="text" formControlName="username" class="form-control" id="uname" placeholder="Enter username" name="uname">
+                    <!-- <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">Please fill out this field.</div> -->
+                </div>
+                <div class="form-group">
+                    <label for="pwd">Password:</label>
+                    <input type="password" formControlName="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
+                    <!-- <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">Please fill out this field.</div> -->
+                </div>
+
+                <button type="submit" class="btn btn-info" (click)="login()" [disabled]="this.loginForm.invalid" >Sign In</button>
+            </form>
+        </div>
+    </div>
+    <div class="card-footer">
+    
+    </div>
+</div>
