@@ -14,6 +14,7 @@ import { FooterComponent } from './footer/footer.component';
 import { ViewComponent } from './view/view.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +39,8 @@ import { LoginComponent } from './login/login.component';
       positionClass: 'toast-top-right',
       closeButton: true,
       progressBar:true
-    }) 
+    }),
+    NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

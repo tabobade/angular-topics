@@ -21,6 +21,13 @@ export class DataService {
   }
 
 
+
+  public getUserByFname(firstname :string):Observable<User>
+  {
+
+    return this.httpClient.get<User>("http://localhost:9090/user/"+firstname);
+  }
+
   public getData(): Observable<User[]> {
     return this.httpClient.get<User[]>("http://localhost:9090/user");
 
@@ -30,18 +37,5 @@ export class DataService {
 
     return this.httpClient.delete<User[]>("http://localhost:9090/user/"+fname);
 
-  }
-
-
-  getUserByFname(fname) {
-  
-    let user: User;
-    for (let index = 0; index < this.users.length; index++) {
-
-      if (fname == this.users[index].fname) {
-        user = this.users[index];
-      }
-    }
-    return user;
   }
 }
